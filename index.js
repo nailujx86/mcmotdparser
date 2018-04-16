@@ -28,19 +28,21 @@ function parsePartHTML(jsonPart) {
             }      
         }
     }
-    var retText = "<div class=\"mc " + classlist.trim() + "\">" + text + "</span>";
+    var retText = "<span class=\"" + classlist.trim() + "\">" + text + "</span>";
     return retText;
 }
 
 function toHtml(jsonText, callback) {
     if(jsonText !== null && typeof jsonText !== 'object'){
         try{
-            jsonText = jsonText.replace("\n", "\\n");
+            jsonText = jsonText.replace("\n", "<br>");
             jsonText = JSON.parse(jsonText);
         } catch(e) {
             callback(e);
         }
     }
+    jsonText = parsePartHTML(jsonText);
+    jsonText = "<div class=\"mc\">" + jsonText + "</div>";
     callback(null, jsonText);
 }
 

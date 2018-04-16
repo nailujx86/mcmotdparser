@@ -66,9 +66,23 @@
 .mc_italic {
     font-style: italic;
 }
-.mc_strikethrough {
-    text-decoration: line-through;
+.mc_strikethrough, .mc_underlined {
+    position: relative;
+    display: inline-block;
 }
-.mc_underlined {
-    text-decoration: underline;
+.mc_strikethrough::before, .mc_underlined::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    right: 0;
+}
+.mc_strikethrough::before {
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
+    top: 55%;
+}
+.mc_underlined::after {
+    border-bottom: 2px solid;
+    border-bottom-color: inherit;
+    bottom: -8%;
 }
