@@ -25,10 +25,10 @@ Usage Web:
 The CSS File and the Minecraft Fonts which help styling the output are in the ```css/``` Folder.
 Parsing is supported for motds in text format as well as motds in the Minecraft Json-Text Format.
 
-#### Renders:
-Render of the example above:
+### Renders:
+Render of the example above:  
 ![Motd0](https://i.imgur.com/kw6JTwF.png)
-Another example: 
+Another example:  
 ![Motd1](https://i.imgur.com/aXmKoLH.png)
-And one last example:
+And one last example:  
 ![Motd2](https://i.imgur.com/HB3Pufj.png)
