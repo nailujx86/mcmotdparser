@@ -106,23 +106,33 @@ function toHtml(motd, callback) {
     *} else {
      * jsonText = JSON.parse(JSON.stringify(jsonText).split('\\n').join("<br>"));
     }*/
-  if(typeof motd === 'object') {
-    jsonToHtml(motd, (err, res) => {
-      callback(null, res);
-    });
-  }
+    
+    if(typeof motd === 'object') {
+        jsonToHtml(motd, (err, res) => {
+            if(err) {
+                callback(err);
+                return;
+            }
+            callback(null, res);
+        });
+    } else if (typeof motd === 'string') {
+        textToJson(motd, (err, json) => {
+            if(err) {
+                callback(err);
+                return;
+            }
+            jsonToHtml(json, (err, res) => {
+                if(err) {
+                    callback(err);
+                    return;
+                }
+                callback(null, res);
+            });
+        });
+    }
 }
 
-var text = "§aHypixel Network §7§c1.8/1.9/1.10/1.11/1.12 §e§lNEW PTL GAME:§b§l THE BRIDGE";
-var json = '{"text":"","extra":[{"text":"Hypixel Network ","extra":[{"text":"","extra":[{"text":"1.8/1.9/1.10/1.11/1.12 ","extra":[{"text":"","extra":[{"text":"NEW PTL GAME:","extra":[{"text":"","extra":[{"text":" THE BRIDGE","extra":[],"bold":true}],"color":"acqua"}],"bold":true}],"color":"yellow"}],"color":"red"}],"color":"gray"}],"color":"green"}]}';
-function lel () {
-    textToJson(text, (err, res) => {
-        console.log(JSON.stringify(res));
-    });
-    jsonToHtml(JSON.parse(json), (err, res) => {
-        console.log(res);
-    });
-} 
-lel();
+//var text = "§aHypixel Network §7§c1.8/1.9/1.10/1.11/1.12 §e§lNEW PTL GAME:§b§l THE BRIDGE";
+//var json = '{"text":"","extra":[{"text":"Hypixel Network ","extra":[{"text":"","extra":[{"text":"1.8/1.9/1.10/1.11/1.12 ","extra":[{"text":"","extra":[{"text":"NEW PTL GAME:","extra":[{"text":"","extra":[{"text":" THE BRIDGE","extra":[],"bold":true}],"color":"acqua"}],"bold":true}],"color":"yellow"}],"color":"red"}],"color":"gray"}],"color":"green"}]}';
 
 exports.motdToHtml = toHtml;
