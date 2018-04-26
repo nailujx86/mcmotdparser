@@ -5,7 +5,7 @@ Usage NodeJS:
     const motdparser = require('mcmotdparser');
     var motd = "§aSuper cool Server §7§Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
     var html = "";
-    motdparser(motd, (err, res) => {
+    motdparser.motdToHtml(motd, (err, res) => {
 	    html = res;
     });
 Usage Web:
