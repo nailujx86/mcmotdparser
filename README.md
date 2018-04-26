@@ -1,5 +1,5 @@
-#MCMotdParser
-###A parser for Minecraft motds which parses them to HTML
+# MCMotdParser
+### A parser for Minecraft motds which parses them to HTML
 Usage NodeJS:
 
     const motdparser = require('mcmotdparser');
