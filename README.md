@@ -27,8 +27,8 @@ Parsing is supported for motds in text format as well as motds in the Minecraft 
 
 ### Renders:
 Render of the example above:  
-![Motd0](https://i.imgur.com/kw6JTwF.png)
+![Motd0](https://i.imgur.com/kw6JTwF.png)  
 Another example:  
-![Motd1](https://i.imgur.com/aXmKoLH.png)
+![Motd1](https://i.imgur.com/aXmKoLH.png)  
 And one last example:  
-![Motd2](https://i.imgur.com/HB3Pufj.png)
+![Motd2](https://i.imgur.com/HB3Pufj.png)  
