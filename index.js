@@ -96,17 +96,6 @@ function textToJson(text, callback) {
 }
 
 function toHtml(motd, callback) {
-    /*if(jsonText !== null && typeof jsonText !== 'object'){
-      *  try{
-      *      jsonText = jsonText.split('\n').join("<br>");
-       *     jsonText = JSON.parse(jsonText);
-        *} catch(e) {
-        *    callback(e);
-        *}
-    *} else {
-     * jsonText = JSON.parse(JSON.stringify(jsonText).split('\\n').join("<br>"));
-    }*/
-    
     if(typeof motd === 'object') {
         jsonToHtml(motd, (err, res) => {
             if(err) {
