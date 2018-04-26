@@ -19,7 +19,7 @@ var colors = {
   '§8': 'dark-gray',
   '§9': 'blue',
   '§a': 'green',
-  '§b': 'acqua',
+  '§b': 'aqua',
   '§c': 'red',
   '§d': 'light-purple',
   '§e': 'yellow',
