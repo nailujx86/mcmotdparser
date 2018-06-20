@@ -1,6 +1,6 @@
 {
   "name": "mcmotdparser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A parser for Minecraft Motds in the old style and in the new style.",
   "main": "motdparsernode.js",
   "scripts": {
@@ -9,9 +9,16 @@
   "author": "nailujx86",
   "license": "GPL-3.0",
   "repository": {
-	"type": "git",
-	"url": "https://github.com/nailujx86/mcmotdparser.git"
+    "type": "git",
+    "url": "https://github.com/nailujx86/mcmotdparser.git"
   },
-  "keywords": ["minecraft","motd","parser","formatting","codes","color"],
+  "keywords": [
+    "minecraft",
+    "motd",
+    "parser",
+    "formatting",
+    "codes",
+    "color"
+  ],
   "homepage": "https://github.com/nailujx86/mcmotdparser"
 }
