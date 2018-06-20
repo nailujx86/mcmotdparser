@@ -1,7 +1,7 @@
 {
   "name": "mcmotdparser",
   "version": "1.0.1",
-  "description": "A parser for Minecraft Motds in the old style and in the new style.",
+  "description": "A parser for Minecraft Motds in the old style (plain text) and in the new style (json).",
   "main": "motdparsernode.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

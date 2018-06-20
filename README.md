@@ -1,7 +1,7 @@
 # MCMotdParser
 ### A parser for Minecraft motds which parses them to HTML  
 
-Supports parsing old and new format motds to HTML and parsing old format motds to new JSON Format motds.  
+Supports parsing old and new format motds to HTML and parsing old format motds to new JSON format motds.  
 
 Usage NodeJS:
 ```javascript
