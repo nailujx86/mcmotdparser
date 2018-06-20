@@ -1,6 +1,6 @@
 {
   "name": "mcmotdparser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A parser for Minecraft Motds in the old style (plain text) and in the new style (json).",
   "main": "motdparsernode.js",
   "scripts": {
