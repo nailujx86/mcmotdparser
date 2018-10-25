@@ -1,2 +1,5 @@
 .vscode/
 index.html
+node_modules/
+build/
+dist/
