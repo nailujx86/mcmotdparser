@@ -1,0 +1,15 @@
+language: node_js
+node_js: "node"
+script: npx gulp
+before_deploy:
+  - git tag "Build_$TRAVIS_BUILD_NUMBER"
+deploy:
+  provider: releases
+  api_key: '$GITHUB_API_KEY'
+  file_glob: true
+  file: dist/*
+  on:
+    tag: true
+    branch: master
+  skip_cleanup: true
+name: "Build $TRAVIS_BUILD_NUMBER on $(date +'%d.%m.%Y %R')"
