@@ -1,5 +1,6 @@
 language: node_js
 node_js: "node"
+if: tag IS blank
 script: npx gulp
 before_deploy:
   - git tag "Build_$TRAVIS_BUILD_NUMBER"
