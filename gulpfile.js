@@ -34,17 +34,10 @@ gulp.task('minify_js', () => {
     done();
 });
 
-gulp.task('copy_fonts', () => {
-    return gulp.src('src/font/*')
-        .pipe(gulp.dest('dist/font'));
-    done();
-});
-
 gulp.task('copy_node', () => {
     return gulp.src('src/*node.js')
         .pipe(gulp.dest('dist'));
     done();
 })
 
-gulp.task('default', gulp.series('clean', gulp.parallel('minify_css', 'minify_js'),
-    'copy_fonts', 'copy_node'));
+gulp.task('default', gulp.series('clean', gulp.parallel('minify_css', 'minify_js'), 'copy_node'));
