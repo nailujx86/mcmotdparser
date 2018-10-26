@@ -1,4 +1,4 @@
-# MCMotdParser
+# MCMotdParser [![Build Status](https://travis-ci.com/nailujx86/mcmotdparser.svg?branch=master)](https://travis-ci.com/nailujx86/mcmotdparser)  
 ### A parser for Minecraft motds which parses them to HTML  
 
 Supports parsing old and new format motds to HTML and parsing old format motds to new JSON format motds.  
