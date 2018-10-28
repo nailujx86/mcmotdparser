@@ -4,7 +4,7 @@
   "description": "A parser for Minecraft Motds in the old style (plain text) and in the new style (json).",
   "main": "dist/motdparsernode.js",
   "scripts": {
-    "prepublish": "npx gulp"
+    "prepare": "npx gulp"
   },
   "author": "nailujx86",
   "license": "GPL-3.0",
