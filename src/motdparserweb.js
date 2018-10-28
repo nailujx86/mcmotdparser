@@ -103,7 +103,7 @@ motdParser.textToJson = function (text, callback) {
     }
     callback(null, jsonObj);
 };
-motdParser.motdToHtml = function (motd, callback) {
+motdParser.toHtml = function (motd, callback) {
     if (typeof motd === 'object') {
         motdParser.jsonToHtml(motd, (err, res) => {
             console.log(res);

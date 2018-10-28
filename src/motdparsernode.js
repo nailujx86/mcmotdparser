@@ -124,4 +124,7 @@ function toHtml(motd, callback) {
 //var text = "§aHypixel Network §7§c1.8/1.9/1.10/1.11/1.12 §e§lNEW PTL GAME:§b§l THE BRIDGE";
 //var json = '{"text":"","extra":[{"text":"Hypixel Network ","extra":[{"text":"","extra":[{"text":"1.8/1.9/1.10/1.11/1.12 ","extra":[{"text":"","extra":[{"text":"NEW PTL GAME:","extra":[{"text":"","extra":[{"text":" THE BRIDGE","extra":[],"bold":true}],"color":"acqua"}],"bold":true}],"color":"yellow"}],"color":"red"}],"color":"gray"}],"color":"green"}]}';
 
-exports.motdToHtml = toHtml;
+exports.jsonToHtml = jsonToHtml;
+exports.parseJsonToHTML = parseJsonToHTML;
+exports.textToJson = textToJson;
+exports.toHtml = toHtml;

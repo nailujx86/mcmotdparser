@@ -8,7 +8,7 @@ Usage NodeJS:
 const motdparser = require('mcmotdparser');
 var motd = "§aSuper cool Server §7Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
 var html = "";
-motdparser.motdToHtml(motd, (err, res) => {
+motdparser.toHtml(motd, (err, res) => {
 	html = res;
 });
 ```
@@ -21,11 +21,13 @@ Usage Web:
 <script>
 	var motd = "§aSuper cool Server §7Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
 	var html = "";
-	motdParser.motdToHtml(motd, function(err, res) {
+	motdParser.toHtml(motd, function(err, res) {
 		html = res; // Do with this whatever you want :)
 	});
 </script>
 ```
+To convert a "text" style motd to a modern json motd one can use ```motdParser.textToJson("motdtext", callback);```  
+
 The CSS File and the Minecraft Fonts which help styling the output are in the ```css/``` Folder.
 Parsing is supported for motds in text format as well as motds in the Minecraft Json-Text Format.
 
