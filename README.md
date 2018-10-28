@@ -16,7 +16,7 @@ Usage Web:
  
 ```javascript
 // Include this tag in your head or below your body
-<script src="https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@v1.0/motdparserweb.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@Build_21/dist/motdparserweb.js" type="text/javascript"></script>
 
 <script>
 	var motd = "§aSuper cool Server §7Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
