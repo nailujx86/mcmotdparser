@@ -1,10 +1,10 @@
 {
   "name": "mcmotdparser",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "A parser for Minecraft Motds in the old style (plain text) and in the new style (json).",
-  "main": "motdparsernode.js",
+  "main": "dist/motdparsernode.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npx gulp"
   },
   "author": "nailujx86",
   "license": "GPL-3.0",
