@@ -46,7 +46,11 @@ function parseJsonToHTML(jsonPart) {
             continue;
         }
         if(key == "color") {
-            classlist += " mc_" + jsonPart[key];
+            if(jsonPart[key].startsWith('#')){
+                styleList += "color: " + jsonPart[key];
+            }else{
+                classlist += " mc_" + jsonPart[key];
+            }
             continue;
         }
         if(key == "extra") {
@@ -55,7 +59,7 @@ function parseJsonToHTML(jsonPart) {
             }      
         }
     }
-    var retText = "<span class=\"" + classlist.trim() + "\">" + text + "</span>";
+    var retText = `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`;
     return retText;
 }
 
