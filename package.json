@@ -1,6 +1,6 @@
 {
   "name": "mcmotdparser",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "A parser for Minecraft Motds in the old style (plain text) and in the new style (json).",
   "main": "dist/motdparsernode.js",
   "scripts": {
@@ -22,14 +22,14 @@
   ],
   "homepage": "https://github.com/nailujx86/mcmotdparser",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "fs-extra": "^7.0.0",
-    "gulp": "^4.0.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "fs-extra": "^9.0.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-uglify": "^3.0.1",
-    "gulp-zopfli-green": "^3.0.0"
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-zopfli-green": "^5.0.1"
   },
   "dependencies": {}
 }
