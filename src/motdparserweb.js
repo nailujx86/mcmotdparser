@@ -36,6 +36,7 @@ motdParser.extras = {
 };
 motdParser.parseJsonToHTML = function (jsonPart) {
     var classlist = "";
+    var styleList = "";
     var text = "";
     for (var key of Object.keys(jsonPart)) {
         if (key == "text") {
@@ -47,7 +48,11 @@ motdParser.parseJsonToHTML = function (jsonPart) {
             continue;
         }
         if (key == "color") {
-            classlist += " mc_" + jsonPart[key];
+            if (jsonPart[key].startsWith('#')) {
+                styleList += "color: " + jsonPart[key];
+            } else {
+                classlist += " mc_" + jsonPart[key];
+            }
             continue;
         }
         if (key == "extra") {
@@ -56,7 +61,7 @@ motdParser.parseJsonToHTML = function (jsonPart) {
             }
         }
     }
-    var retText = "<span class=\"" + classlist.trim() + "\">" + text + "</span>";
+    var retText = `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`;
     return retText;
 };
 motdParser.jsonToHtml = function (json, callback) {
@@ -106,7 +111,6 @@ motdParser.textToJson = function (text, callback) {
 motdParser.toHtml = function (motd, callback) {
     if (typeof motd === 'object') {
         motdParser.jsonToHtml(motd, (err, res) => {
-            console.log(res);
             if (err) {
                 callback(err);
                 return;
