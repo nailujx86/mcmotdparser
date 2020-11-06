@@ -3,7 +3,9 @@
 
 Supports parsing old and new format motds to HTML and parsing old format motds to new JSON format motds.  
 
-Usage NodeJS:
+Usage NodeJS:  
+Install from npm (see https://www.npmjs.com/package/mcmotdparser):  
+`npm install motdparser`  
 ```javascript
 const motdparser = require('mcmotdparser');
 var motd = "§aSuper cool Server §7Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
@@ -16,7 +18,7 @@ Usage Web:
  
 ```javascript
 // Include this tag in your head or below your body
-<script src="https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@Build_22/dist/motdparserweb.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@master/dist/motdparserweb.js" type="text/javascript"></script>
 
 <script>
 	var motd = "§aSuper cool Server §7Come join us! §e§lNEW GAME:§b§l THE BRIDGE";
@@ -28,7 +30,7 @@ Usage Web:
 ```
 To convert a "text" style motd to a modern json motd one can use ```motdParser.textToJson("motdtext", callback);```  
 
-The CSS File which helps styling the output are in the ```dist/``` Folder and on <https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@Build_22/dist/mcmotd.css>.
+The CSS File which helps styling the output are in the ```dist/``` Folder and on <https://cdn.jsdelivr.net/gh/nailujx86/mcmotdparser@master/dist/mcmotd.css>.
 Parsing is supported for motds in text format as well as motds in the Minecraft Json-Text Format.
 
 ### Renders:
@@ -42,6 +44,6 @@ And one last example:
 ### Size (gipped):
 | File | Size |
 | ---- | ---- |
-| motdparserweb.js.gz | 941 bytes |
+| motdparserweb.js.gz | 1424 bytes |
 | mcmotd.css.gz | 491 bytes |
-=> 1.4 kB all together
+=> 1.9 kB all together
