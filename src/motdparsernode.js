@@ -65,65 +65,73 @@ function parseJsonToHTML(jsonPart) {
 }
 
 function jsonToHtml(json, callback) {
-    json = JSON.parse(JSON.stringify(json).split('\\n').join("<br>"));
-    let motd = parseJsonToHTML(json);
-    motd = "<div class=\"mc\">" + motd + "</div>";
-    callback(null, motd);
+    const promise = new Promise((resolve, _reject) => {
+        json = JSON.parse(JSON.stringify(json).split('\\n').join("<br>"));
+        let motd = parseJsonToHTML(json);
+        motd = "<div class=\"mc\">" + motd + "</div>";
+        resolve(motd)
+    })
+
+    if (callback && typeof callback === 'function') {
+        promise.then(callback.bind(null, null), callback);
+    }
+    return promise;
 }
 
 function textToJson(text, callback) {
-    let jsonObj = { text: "", extra: [] };
-    let curObj = jsonObj;
-    let arr = text.split("");
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] != '§') {
-            curObj.text += arr[i];
-        } else if (arr[i + 1] == 'r') {
-            let innerObj = { text: "", extra: [] };
-            jsonObj.extra.push(innerObj);
-            curObj = innerObj;
-            i++;
-        } else {
-            let codeStr = '§' + arr[i + 1];
-            let innerObj = { text: "", extra: [] };
-            if (colors.hasOwnProperty(codeStr)) {
-                innerObj.color = colors[codeStr];
+    const promise = new Promise((resolve, _reject) => {
+        let jsonObj = { text: "", extra: [] };
+        let curObj = jsonObj;
+        let arr = text.split("");
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] != '§') {
+                curObj.text += arr[i];
+            } else if (arr[i + 1] == 'r') {
+                let innerObj = { text: "", extra: [] };
+                jsonObj.extra.push(innerObj);
+                curObj = innerObj;
+                i++;
+            } else {
+                let codeStr = '§' + arr[i + 1];
+                let innerObj = { text: "", extra: [] };
+                if (colors.hasOwnProperty(codeStr)) {
+                    innerObj.color = colors[codeStr];
+                }
+                if (extras.hasOwnProperty(codeStr)) {
+                    innerObj[extras[codeStr]] = true;
+                }
+                curObj.extra.push(innerObj);
+                curObj = innerObj;
+                i++;
             }
-            if (extras.hasOwnProperty(codeStr)) {
-                innerObj[extras[codeStr]] = true;
-            }
-            curObj.extra.push(innerObj);
-            curObj = innerObj;
-            i++;
         }
+        resolve(jsonObj);
+    })
+    
+    if (callback && typeof callback === 'function') {
+        promise.then(callback.bind(null, null), callback);
     }
-    callback(null, jsonObj);
+    return promise;
 }
 
 function toHtml(motd, callback) {
-    if (typeof motd === 'object') {
-        jsonToHtml(motd, (err, res) => {
-            if (err) {
-                callback(err);
-                return;
-            }
-            callback(null, res);
-        });
-    } else if (typeof motd === 'string') {
-        textToJson(motd, (err, json) => {
-            if (err) {
-                callback(err);
-                return;
-            }
-            jsonToHtml(json, (err, res) => {
-                if (err) {
-                    callback(err);
-                    return;
-                }
-                callback(null, res);
-            });
-        });
+    const promise = new Promise((resolve, reject) => {
+        if (typeof motd === 'object') {
+            return jsonToHtml(motd)
+                .then(resolve)
+                .catch(reject)
+        } else if (typeof motd === 'string') {
+            return textToJson(motd)
+                .then(jsonToHtml)
+                .then(resolve)
+                .catch(reject)
+        }
+    })
+
+    if (callback && typeof callback === 'function') {
+        promise.then(callback.bind(null, null), callback);
     }
+    return promise;
 }
 
 //var text = "§aHypixel Network §7§c1.8/1.9/1.10/1.11/1.12 §e§lNEW PTL GAME:§b§l THE BRIDGE";
