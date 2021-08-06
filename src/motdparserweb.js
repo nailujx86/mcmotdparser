@@ -35,34 +35,38 @@ motdParser.extras = {
     '§o': 'italic'
 };
 motdParser.parseJsonToHTML = function (jsonPart) {
-    var classlist = "";
-    var styleList = "";
-    var text = "";
-    for (var key of Object.keys(jsonPart)) {
-        if (key == "text") {
-            text += jsonPart.text;
-            continue;
-        }
-        if (motdParser.classes.hasOwnProperty(key)) {
-            classlist += " " + motdParser.classes[key];
-            continue;
-        }
-        if (key == "color") {
-            if (jsonPart[key].startsWith('#')) {
-                styleList += "color: " + jsonPart[key];
-            } else {
-                classlist += " mc_" + jsonPart[key];
+    var toParse = Array.isArray(jsonPart) ? jsonPart : [jsonPart];
+    var html = ""
+    for (var parsePart of toParse) {
+        var classlist = "";
+        var styleList = "";
+        var text = "";
+        for (var key of Object.keys(parsePart)) {
+            if (key == "text") {
+                text += parsePart.text;
+                continue;
             }
-            continue;
-        }
-        if (key == "extra") {
-            for (var jsonPartExtra of jsonPart.extra) {
-                text += motdParser.parseJsonToHTML(jsonPartExtra);
+            if (motdParser.classes.hasOwnProperty(key)) {
+                classlist += " " + motdParser.classes[key];
+                continue;
+            }
+            if (key == "color") {
+                if (parsePart[key].startsWith('#')) {
+                    styleList += "color: " + parsePart[key];
+                } else {
+                    classlist += " mc_" + parsePart[key];
+                }
+                continue;
+            }
+            if (key == "extra") {
+                for (var jsonPartExtra of parsePart.extra) {
+                    text += motdParser.parseJsonToHTML(jsonPartExtra);
+                }
             }
         }
+        html += `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`;
     }
-    var retText = `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`;
-    return retText;
+    return html;
 };
 motdParser.jsonToHtml = function (json, callback) {
     json = JSON.parse(JSON.stringify(json).split('\\n').join("<br>"));
