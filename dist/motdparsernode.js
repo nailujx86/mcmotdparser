@@ -34,34 +34,38 @@ const extras = {
 };
 
 function parseJsonToHTML(jsonPart) {
-    let classlist = "";
-    let styleList = "";
-    let text = "";
-    for (var key of Object.keys(jsonPart)) {
-        if (key == "text") {
-            text += jsonPart.text;
-            continue;
-        }
-        if (classes.hasOwnProperty(key)) {
-            classlist += " " + classes[key];
-            continue;
-        }
-        if (key == "color") {
-            if (jsonPart[key].startsWith('#')) {
-                styleList += "color: " + jsonPart[key];
-            } else {
-                classlist += " mc_" + jsonPart[key];
+    let toParse = Array.isArray(jsonPart) ? jsonPart : [jsonPart];
+    let html = ""
+    toParse.forEach(parsePart => {
+        let classlist = "";
+        let styleList = "";
+        let text = "";
+        for (var key of Object.keys(parsePart)) {
+            if (key == "text") {
+                text += parsePart.text;
+                continue;
             }
-            continue;
-        }
-        if (key == "extra") {
-            for (var jsonPartExtra of jsonPart.extra) {
-                text += parseJsonToHTML(jsonPartExtra);
+            if (classes.hasOwnProperty(key)) {
+                classlist += " " + classes[key];
+                continue;
+            }
+            if (key == "color") {
+                if (jsonPart[key].startsWith('#')) {
+                    styleList += "color: " + parsePart[key];
+                } else {
+                    classlist += " mc_" + parsePart[key];
+                }
+                continue;
+            }
+            if (key == "extra") {
+                for (var jsonPartExtra of parsePart.extra) {
+                    text += parseJsonToHTML(jsonPartExtra);
+                }
             }
         }
-    }
-    const retText = `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`;
-    return retText;
+        html += `<span class="${classlist.trim()}" style="${styleList.trim()}">${text}</span>`
+    })
+    return html;
 }
 
 function jsonToHtml(json, callback) {
@@ -136,6 +140,7 @@ function toHtml(motd, callback) {
 
 //var text = "§aHypixel Network §7§c1.8/1.9/1.10/1.11/1.12 §e§lNEW PTL GAME:§b§l THE BRIDGE";
 //var json = '{"text":"","extra":[{"text":"Hypixel Network ","extra":[{"text":"","extra":[{"text":"1.8/1.9/1.10/1.11/1.12 ","extra":[{"text":"","extra":[{"text":"NEW PTL GAME:","extra":[{"text":"","extra":[{"text":" THE BRIDGE","extra":[],"bold":true}],"color":"acqua"}],"bold":true}],"color":"yellow"}],"color":"red"}],"color":"gray"}],"color":"green"}]}';
+//var jsonArr = '[{"text":"test"},{"text":"","extra":[{"text":"Hypixel Network ","extra":[{"text":"","extra":[{"text":"1.8/1.9/1.10/1.11/1.12 ","extra":[{"text":"","extra":[{"text":"NEW PTL GAME:","extra":[{"text":"","extra":[{"text":" THE BRIDGE","extra":[],"bold":true}],"color":"acqua"}],"bold":true}],"color":"yellow"}],"color":"red"}],"color":"gray"}],"color":"green"}]}]';
 
 exports.jsonToHtml = jsonToHtml;
 exports.parseJsonToHTML = parseJsonToHTML;
